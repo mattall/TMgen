@@ -8,12 +8,13 @@ try:
     import numpy
 except ImportError as e:
     run("pip install numpy==1.24.3", shell=True)
+    import numpy
     
 try:         
     from Cython.Build import cythonize
 except ImportError as e:    
     run("pip install Cython==0.29.23", shell=True)
-    
+    from Cython.Build import cythonize
 
 extensions = [
     Extension(

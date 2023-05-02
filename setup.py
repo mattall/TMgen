@@ -2,13 +2,18 @@
 
 from setuptools import setup, find_packages
 from setuptools.extension import Extension
+from subprocess import run
 
 try:
     import numpy
-    from Cython.Build import cythonize
 except ImportError as e:
-    print('TMgen requires numpy and cython to be installed!')
-    raise e
+    run("pip install numpy==1.24.3", shell=True)
+    
+try:         
+    from Cython.Build import cythonize
+except ImportError as e:    
+    run("pip install Cython==0.29.23", shell=True)
+    
 
 extensions = [
     Extension(
